@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Form, ControlLabel, FormGroup, FormControl, Col, Checkbox, Button } from 'react-bootstrap';
+import DataConnector from '../../services/DataConnector';
 
 export default class AddDatabase extends Component {
   constructor(props) {
@@ -9,8 +10,7 @@ export default class AddDatabase extends Component {
 
   save(event) {
     event.preventDefault();
-    // use axios to call BE to save input into a .json file
-    console.log(this);
+    DataConnector.add(this.state);
   }
 
   handleInput(event) {
@@ -37,7 +37,7 @@ export default class AddDatabase extends Component {
             User
           </Col>
           <Col sm={10}>
-            <FormControl type="input" placeholder="Host" />
+            <FormControl type="input" placeholder="User" name="user" onChange={(event) => this.handleInput(event)} />
           </Col>
         </FormGroup>
 
@@ -49,7 +49,7 @@ export default class AddDatabase extends Component {
             Password
           </Col>
           <Col sm={10}>
-            <FormControl type="input" placeholder="Host" />
+            <FormControl type="input" placeholder="Password" name="passwd" onChange={(event) => this.handleInput(event)} />
           </Col>
         </FormGroup>
 
@@ -58,7 +58,7 @@ export default class AddDatabase extends Component {
             Host
           </Col>
           <Col sm={10}>
-            <FormControl type="input" placeholder="Host" />
+            <FormControl type="input" placeholder="Host" name="host" onChange={(event) => this.handleInput(event)} />
           </Col>
         </FormGroup>
 
@@ -67,7 +67,7 @@ export default class AddDatabase extends Component {
             Port
           </Col>
           <Col sm={10}>
-            <FormControl type="input" placeholder="Port" />
+            <FormControl type="input" placeholder="Port" name="port" onChange={(event) => this.handleInput(event)} />
           </Col>
         </FormGroup>
 
@@ -76,7 +76,7 @@ export default class AddDatabase extends Component {
             URI
           </Col>
           <Col sm={10}>
-            <FormControl type="input" placeholder="URI" />
+            <FormControl type="input" placeholder="URI" name="uri" onChange={(event) => this.handleInput(event)}/>
           </Col>
         </FormGroup>
 
